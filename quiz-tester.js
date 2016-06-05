@@ -27,110 +27,110 @@ It is assumed that the turns of the player will be automatically changed after e
 The application will console log all the passed or failed test */
 
 // CONFIG
-var showPasses = true
-var playerOne = 1
-var playerTwo = 2
-var playerDraw = 3
+var showPasses = true;
+var playerOne = 1;
+var playerTwo = 2;
+var playerDraw = 3;
 
-var testsRun = 0
-var testsPassed = 0
-var testsFailed = 0
+var testsRun = 0;
+var testsPassed = 0;
+var testsFailed = 0;
 
 // TESTS TO RUN
-console.log('==================================')
-console.log('RUNNING QUIZ TESTER')
-console.log('==================================')
-simulateGame('P1 Wins', playerOne)
-simulateGame('P2 Wins', playerTwo)
+console.log('==================================');
+console.log('RUNNING QUIZ TESTER');
+console.log('==================================');
+simulateGame('P1 Wins', playerOne);
+simulateGame('P2 Wins', playerTwo);
 if (numberOfQuestions() % 2 === 0) {
-  simulateGame('Draw Game', playerDraw)
+  simulateGame('Draw Game', playerDraw);
 }
-console.log('==================================')
-console.log(testsRun + ' TESTS RUN')
-if (testsPassed > 0) console.log('%c>' + testsPassed + ' TESTS PASSED', 'color: green')
-if (testsFailed > 0) console.log('%c>' + testsFailed + ' TESTS FAILED', 'color: red')
+console.log('==================================');
+console.log(testsRun + ' TESTS RUN');
+if (testsPassed > 0) console.log('%c>' + testsPassed + ' TESTS PASSED', 'color: green');
+if (testsFailed > 0) console.log('%c>' + testsFailed + ' TESTS FAILED', 'color: red');
 // restart the game so it can run normally
-restart()
+restart();
 
 function simulateGame (testTitle, winner) {
-  console.log('-------------------------------')
-  console.log('Testing: ' + testTitle)
-  console.log('-------------------------------')
-  restart()
+  console.log('-------------------------------');
+  console.log('Testing: ' + testTitle);
+  console.log('-------------------------------');
+  restart();
 
-  expect('isGameOver should return false at start of game', isGameOver(), false)
-  expect('whoWon should return 0 at start of the game', whoWon(), 0)
+  expect('isGameOver should return false at start of game', isGameOver(), false);
+  expect('whoWon should return 0 at start of the game', whoWon(), 0);
 
-  var questionCount = numberOfQuestions()
-  expect('numberOfQuestions should be greater than 0', questionCount, 0, '>')
+  var questionCount = numberOfQuestions();
+  expect('numberOfQuestions should be greater than 0', questionCount, 0, '>');
 
   for (var i = 0; i < questionCount; ++i) {
-    expect('currentQuestion should be equal to ' + i, currentQuestion(), i)
+    expect('currentQuestion should be equal to ' + i, currentQuestion(), i);
 
     // if these tests fails don't continue as the logic below depends on them
 
-    var answerCount = numberOfAnswers()
-    var passed = expect('numberOfAnswers should be greater than 1', answerCount, 1, '>')
+    var answerCount = numberOfAnswers();
+    var passed = expect('numberOfAnswers should be greater than 1', answerCount, 1, '>');
     if (!passed) {
-      return
+      return;
     }
 
-    var answer = correctAnswer()
-    passed = expect('correctAnswer should be greater than or equal to 0', answer, 0, '>=')
+    var answer = correctAnswer();
+    passed = expect('correctAnswer should be greater than or equal to 0', answer, 0, '>=');
     if (!passed) {
-      return
+      return;
     }
 
-    var shouldGuessCorrect = false
+    var shouldGuessCorrect = false;
     if (winner === 3) {
-      shouldGuessCorrect = true
+      shouldGuessCorrect = true;
     } else if (i % 2 === 0) {
-      shouldGuessCorrect = (winner === 1)
+      shouldGuessCorrect = (winner === 1);
     } else {
-      shouldGuessCorrect = (winner === 2)
+      shouldGuessCorrect = (winner === 2);
     }
 
     if (!shouldGuessCorrect) {
-      var incorrectAnswer = 0
+      var incorrectAnswer = 0;
       while (incorrectAnswer === answer) {
-        incorrectAnswer++
+        incorrectAnswer++;
       }
     }
 
     // then guess correct
-    if (shouldGuessCorrect) expect('playTurn should return true if correctAnswer', playTurn(answer), true)
-    else expect('playTurn should return false if incorrect answer', playTurn(incorrectAnswer), false)
+    if (shouldGuessCorrect) expect('playTurn should return true if correctAnswer', playTurn(answer), true);
+    else expect('playTurn should return false if incorrect answer', playTurn(incorrectAnswer), false);
   }
 
-  playTurn(0)
-  console.log(currentQuestion() + ' ' + questionCount)
-  expect('playTurn should not be allow after gameover, currentTurn should not advance', currentQuestion(), questionCount)
+  playTurn(0);
+  console.log(currentQuestion() + ' ' + questionCount);
+  expect('playTurn should not be allow after gameover, currentTurn should not advance', currentQuestion(), questionCount);
 
-  expect('whoWon should return ' + winner + ' at end of the game', whoWon(), winner)
+  expect('whoWon should return ' + winner + ' at end of the game', whoWon(), winner);
 }
 
 function expect (expectationMessage, testFunctionResult, returnValue, operator) {
-  ++testsRun
+  ++testsRun;
 
-  var passed = false
+  var passed = false;
 
   if (operator && operator !== '===') {
     switch (operator) {
-      case '>' : passed = (testFunctionResult > returnValue)
-        break
-      case '>=' : passed = (testFunctionResult >= returnValue)
+      case '>' : passed = (testFunctionResult > returnValue);
+        break;
+      case '>=' : passed = (testFunctionResult >= returnValue);
     }
   } else {
-    passed = (testFunctionResult === returnValue)
+    passed = (testFunctionResult === returnValue);
   }
 
   if (passed) {
-    ++testsPassed
-    if (showPasses) console.log('%c[PASS] ' + expectationMessage, 'color: green')
-    return true
+    ++testsPassed;
+    if (showPasses) console.log('%c[PASS] ' + expectationMessage, 'color: green');
+    return true;
   }
 
-  ++testsFailed
-  console.log('%c[FAIL] ' + expectationMessage + ' but it returned ' + testFunctionResult, 'color: red')
-  return false
+  ++testsFailed;
+  console.log('%c[FAIL] ' + expectationMessage + ' but it returned ' + testFunctionResult, 'color: red');
+  return false;
 }
