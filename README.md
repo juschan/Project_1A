@@ -2,6 +2,8 @@
 
 A web-based MCQ quiz game which alternate questions between two players.
 
+Questions taken from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA).
+
 
 ###Technology
 The technology used include:

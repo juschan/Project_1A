@@ -11,10 +11,64 @@ function Question (prompt, answers, correctAnswerIndex) {
 // using the new keyword and the constructor we can create questions for the quiz
 var question1 = new Question('the question', ['answer a', 'answer b', 'answer c', 'answer d'], 0);
 
+var data = [
+    {
+        prompt:"All of these animals have large ears (relative to their size) except one.",
+        choices: ["Polar bears", "Foxes", "Bats", "Elephants"],
+        correctChoice: 1
+    },
+    {
+        prompt: "This species of great apes with long arms and reddish hair suffer habitat destruction due to logging, mining and forest fires.",
+        choices: ["Orangutan","Gorilla","Baboons","Chimpanzee"],
+        correctChoice:1
+    },
+    {
+        prompt: "Ancient Japanese thought this animal caused earthquakes.",
+        choices: ["Birds", "Spiders", "Snakes", "Frogs"],
+        correctChoice: 2
+    },
+    {
+        prompt: "This animal can clean its own ears with its 21-inch tongue.",
+        choices:["Lizard","Elephant","Lion","Giraffe"],
+        correctChoice:4
+    },
+    {
+        prompt: "What is the breed of animal created from the crossing of a male lion and a female tiger?",
+        choices:["Tigon","Tiges", "Liger", "Ligon"],
+        correctChoice:3
+    },
+    {
+        prompt: "What is the breed of animal created from the crossing of a female lion and a male tiger?",
+        choices:["Tigen","Liger", "Tigon", "Liges"],
+        correctChoice:3
+    },
+
+];
+
+var questionSet = function() {
+        var qns=[];
+        for(var i=0; i<data.length; i++){
+            var qn = new Question(data[i].prompt, data[i].choices, data[i].correctChoice);
+            //console.log(data[i]);
+            qns.push(qn);
+        }
+        return qns;
+}();
+
+//code from: www.askyb.com/javascript/load-json-file-locally-by-js-without-jquery/
+// function loadQuestion() {
+//     var data=JSON.parse("questions.json");
+//     for(var i=0; i<data.length; i++){
+//         var qn = new Question(data[i].prompt, data[i].choices, data[i].correctChoice);
+//         qns.push(qn);
+//     }
+// }
+
+
 // we can create an object to represent all of the settings and scores for the quiz
 var quiz = {
   currentQuestion: 0,
-  questions: [question1, question1, question1, question1],
+  questions: questionSet,
   isGameOver: false,
   player1Points: 0,
   player2Points: 0
@@ -42,6 +96,8 @@ function numberOfAnswers () {
 
 // playTurn should take a single integer, which specifies which choice the current player wants to make. It should return a boolean true/false if the answer is correct.
 function playTurn (choice) {
+  //change from zero-index to one-index
+  choice++;
   if (quiz.isGameOver) {
     return false;
   }
@@ -85,7 +141,10 @@ function restart () {
 // a function to update the display whenever the data changes
 function updateDisplay () {
   if (isGameOver()) {
-    $('h1').text(' gameover. winner is ' + whoWon());
+    var status=["Game Over. The winner is Player 1.",
+        "Game Over. The winner is Player 2",
+        "Game Over. It is a DRAW!"];
+    $('h1').text(status[whoWon()-1]);
   } else {
     $('h1').text(quiz.currentQuestion + ') ' + quiz.questions[quiz.currentQuestion].prompt);
     // hard coded display, only has 4 answers at a time. Each is displayed as a button, so can use the order (eg) that they appear in the dom to select them
@@ -108,6 +167,7 @@ $(function () {
     } else {
       // can use jquery index() to find the position of this element in relation to its siblings. works as only answers are in this container
       playTurn($(this).index());
+      //console.log("Index: " + $(this).index());
     }
     updateDisplay();
 });
