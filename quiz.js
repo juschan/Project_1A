@@ -135,9 +135,9 @@ function updateDisplay () {
     var status=["Game Over. The winner is Player 1.",
         "Game Over. The winner is Player 2",
         "Game Over. It is a DRAW!"];
-    $('h1').text(status[whoWon()-1]);
+    $('h2').text(status[whoWon()-1]);
   } else {
-    $('h1').text(quiz.currentQuestion + ') ' + quiz.questions[quiz.currentQuestion].prompt);
+    $('h2').text((quiz.currentQuestion+1) + ') ' + quiz.questions[quiz.currentQuestion].prompt);
     // hard coded display, only has 4 answers at a time. Each is displayed as a button, so can use the order (eg) that they appear in the dom to select them
     $('button').eq(0).text(quiz.questions[quiz.currentQuestion].choices[0]);
     $('button').eq(1).text(quiz.questions[quiz.currentQuestion].choices[1]);

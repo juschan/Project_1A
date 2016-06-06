@@ -24,24 +24,36 @@ button {
     border-radius: 500px;
 }
 
-h3{
-    width: 300px;
+h1 {
+    width: 600px;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #B58A70;
+    font: bold 40px/36px Roboto, serif;
+    border-radius: 500px;
+    padding: 20px;
+}
+
+h2{
+    width: 600px;
     justify-content: center;
     text-align: center;
     border: 1px solid black;
     background-color: #B58A70;
     font: 20px/36px Roboto, serif;
     border-radius: 500px;
-    padding: 1px;
+    padding: 20px;
 }
 
-h1{
-    width: 600px;
+h3{
+    display: inline-block;
+    width: 250px;
     justify-content: center;
     text-align: center;
     border: 1px solid black;
     background-color: #AF986C;
     font: 20px/36px Roboto, serif;
     border-radius: 500px;
-    padding: 20px;
+    padding: 10px;
 }

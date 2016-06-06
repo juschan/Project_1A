@@ -1,6 +1,6 @@
 # Project1A
 
-A web-based MCQ quiz game which alternate questions between two players.
+A web-based MCQ quiz game which alternate questions between two players. One point is given for a correct answer. 
 
 Questions taken from [OpenTriviaQA](https://github.com/uberspot/OpenTriviaQA).
 
@@ -14,6 +14,7 @@ The technology used include:
 
 
 ###How it works
+
 
 
 
