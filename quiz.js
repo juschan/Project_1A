@@ -8,9 +8,9 @@ function Question (prompt, answers, correctAnswerIndex) {
   this.correctChoice = correctAnswerIndex;
 }
 
-// using the new keyword and the constructor we can create questions for the quiz
-var question1 = new Question('the question', ['answer a', 'answer b', 'answer c', 'answer d'], 0);
-
+//data variable is a JSON store of Question object instances.
+//Ensure that there are even number of questions
+// TODO: To store data in external JSON file.
 var data = [
     {
         prompt:"All of these animals have large ears (relative to their size) except one.",
@@ -45,6 +45,7 @@ var data = [
 
 ];
 
+//questionSet  variable calls on function (almost like Constructor) to create an array of Question objects using the data variable.
 var questionSet = function() {
         var qns=[];
         for(var i=0; i<data.length; i++){
@@ -54,15 +55,6 @@ var questionSet = function() {
         }
         return qns;
 }();
-
-//code from: www.askyb.com/javascript/load-json-file-locally-by-js-without-jquery/
-// function loadQuestion() {
-//     var data=JSON.parse("questions.json");
-//     for(var i=0; i<data.length; i++){
-//         var qn = new Question(data[i].prompt, data[i].choices, data[i].correctChoice);
-//         qns.push(qn);
-//     }
-// }
 
 
 // we can create an object to represent all of the settings and scores for the quiz
@@ -104,15 +96,14 @@ function playTurn (choice) {
   var correct = false;
   if (choice === quiz.questions[quiz.currentQuestion].correctChoice) {
     correct = true;
-    if (quiz.currentQuestion % 2) {
-      quiz.player2Points++;
+    if (quiz.currentQuestion % 2) {quiz.player2Points++;
     } else {
-      quiz.player1Points++;
+     quiz.player1Points++;
     }
   }
   ++quiz.currentQuestion;
   if (quiz.currentQuestion === numberOfQuestions()) {
-    quiz.isGameOver = true;
+      quiz.isGameOver = true;
   }
   return correct;
 }
