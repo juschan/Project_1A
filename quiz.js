@@ -135,7 +135,10 @@ function updateDisplay () {
     var status=["Game Over. The winner is Player 1.",
         "Game Over. The winner is Player 2",
         "Game Over. It is a DRAW!"];
-    $('h2').text(status[whoWon()-1]);
+    $('h2').text(status[whoWon()-1]);//update
+    $('div').toggle();//hide
+    $('start').toggle();//show
+    restart();
   } else {
     $('h2').text((quiz.currentQuestion+1) + ') ' + quiz.questions[quiz.currentQuestion].prompt);
     // hard coded display, only has 4 answers at a time. Each is displayed as a button, so can use the order (eg) that they appear in the dom to select them
@@ -151,17 +154,29 @@ function updateDisplay () {
 
 // the jQuery ready function will add click listeners once the dom is loaded
 $(function () {
+
+  //When start button is pressed
+  $('start').click(function () {
+      $('div').show();
+      $('start').toggle();
+      restart();
+      updateDisplay();
+  });
+
+
   $('button').click(function () {
     // if gameover then restart else log a player turn
     if (isGameOver()) {
-      restart();
+
     } else {
       // can use jquery index() to find the position of this element in relation to its siblings. works as only answers are in this container
       playTurn($(this).index());
       //console.log("Index: " + $(this).index());
     }
     updateDisplay();
-});
-  // update the display for the first time
-  updateDisplay();
+  });
+
+
+
+
 });

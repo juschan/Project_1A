@@ -35,7 +35,7 @@ h1 {
     padding: 20px;
 }
 
-h2{
+h2 {
     width: 600px;
     justify-content: center;
     text-align: center;
@@ -46,9 +46,9 @@ h2{
     padding: 20px;
 }
 
-h3{
+h3 {
     display: inline-block;
-    width: 250px;
+    width: 150px;
     justify-content: center;
     text-align: center;
     border: 1px solid black;
@@ -56,4 +56,11 @@ h3{
     font: 20px/36px Roboto, serif;
     border-radius: 500px;
     padding: 10px;
+}
+
+start {
+    font: 16px/36px Roboto, serif;
+    background-color: #878758;
+    border: 1px solid black;
+    border-radius: 500px;
 }
