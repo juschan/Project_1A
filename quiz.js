@@ -154,8 +154,8 @@ function updateDisplay () {
     $('button').eq(3).text(quiz.questions[quiz.currentQuestion].choices[3]);
   }
   // update player scores regardless
-  $('h3').eq(0).text('Player1: ' + quiz.player1Points);
-  $('h3').eq(1).text('Player2: ' + quiz.player2Points);
+  $('h3').eq(0).text('Player 1: ' + quiz.player1Points);
+  $('h3').eq(1).text('Player 2: ' + quiz.player2Points);
 }
 
 // the jQuery ready function will add click listeners once the dom is loaded

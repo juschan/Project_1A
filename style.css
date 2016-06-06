@@ -5,40 +5,43 @@
 }
 
 body{
-    background:#003140;
+    background:#BFA77D;
 }
 
-.canvas {
-    width: 600px;
-    height: 500px;
+div {
+    width: 800px;
+    height: 800px;
 }
 
-.grid {
+button {
     display: inline-block;
-    width: 350px;
-    height: 350px;
-}
-
-.square {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 200px;
     text-align: center;
     justify-content: center;
     border: 1px solid black;
-    background-color: #00AFEB;
-    font: bold 40px/70px Georgia, serif;
-    border-radius:25%;
+    background-color: #878758;
+    font: 20px/20px Roboto, serif;
+    border-radius: 500px;
 }
 
-.restart, .status{
+h3{
     width: 300px;
     justify-content: center;
     text-align: center;
     border: 1px solid black;
-    background-color: #0093BF;
-    font: bold 20px/36px Georgia, serif;
+    background-color: #B58A70;
+    font: 20px/36px Roboto, serif;
     border-radius: 500px;
-    padding:0px;
+    padding: 1px;
+}
 
+h1{
+    width: 600px;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #AF986C;
+    font: 20px/36px Roboto, serif;
+    border-radius: 500px;
+    padding: 20px;
 }
