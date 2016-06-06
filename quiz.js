@@ -138,7 +138,6 @@ function updateDisplay () {
     $('h2').text(status[whoWon()-1]);//update
     $('div').toggle();//hide
     $('start').toggle();//show
-    restart();
   } else {
     $('h2').text((quiz.currentQuestion+1) + ') ' + quiz.questions[quiz.currentQuestion].prompt);
     // hard coded display, only has 4 answers at a time. Each is displayed as a button, so can use the order (eg) that they appear in the dom to select them

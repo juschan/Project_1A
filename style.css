@@ -5,7 +5,7 @@
 }
 
 body{
-    background:#BFA77D;
+    background:#FFFFFF;
 }
 
 div {
@@ -19,7 +19,7 @@ button {
     text-align: center;
     justify-content: center;
     border: 1px solid black;
-    background-color: #878758;
+    background-color: #C4F21B;
     font: 20px/20px Roboto, serif;
     border-radius: 500px;
 }
@@ -29,7 +29,7 @@ h1 {
     justify-content: center;
     text-align: center;
     border: 1px solid black;
-    background-color: #B58A70;
+    background-color: #F25116;
     font: bold 40px/36px Roboto, serif;
     border-radius: 500px;
     padding: 20px;
@@ -40,7 +40,7 @@ h2 {
     justify-content: center;
     text-align: center;
     border: 1px solid black;
-    background-color: #B58A70;
+    background-color: #F2CC0F;
     font: 20px/36px Roboto, serif;
     border-radius: 500px;
     padding: 20px;
@@ -52,7 +52,7 @@ h3 {
     justify-content: center;
     text-align: center;
     border: 1px solid black;
-    background-color: #AF986C;
+    background-color: #ADD5F8;
     font: 20px/36px Roboto, serif;
     border-radius: 500px;
     padding: 10px;
@@ -60,7 +60,7 @@ h3 {
 
 start {
     font: 16px/36px Roboto, serif;
-    background-color: #878758;
+    background-color: #C4F21B;
     border: 1px solid black;
     border-radius: 500px;
 }
